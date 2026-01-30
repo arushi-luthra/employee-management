@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Employee Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<h2 id="welcome"></h2>
+<button onclick="logout()" class="logout">Logout</button>
+
+<!-- ================= ADMIN SECTION ================= -->
+<div id="adminSection" class="card">
+  <h3>Add / Edit Employee</h3>
+
+  <input id="name" placeholder="Full Name">
+  <input id="email" placeholder="Email">
+  <input id="mobile" placeholder="Mobile No">
+  <input id="salary" placeholder="Salary">
+
+  <select id="department">
+    <option value="">Select Department</option>
+    <option>IT</option>
+    <option>Finance</option>
+    <option>HR</option>
+  </select>
+
+  <!-- rating stays ONLY here -->
+  <select id="rating">
+    <option value="">Select Rating</option>
+    <option>Excellent</option>
+    <option>Good</option>
+    <option>Average</option>
+  </select>
+
+  <button onclick="addEmployee()">Submit</button>
+</div>
+
+<!-- ================= FILTERS ================= -->
+<div class="filters">
+  <input
+    type="text"
+    id="searchText"
+    placeholder="Search by name or email"
+    onkeyup="applyFilters()"
+  >
+
+  <select id="filterDept" onchange="applyFilters()">
+    <option value="">All Departments</option>
+    <option>IT</option>
+    <option>Finance</option>
+    <option>HR</option>
+  </select>
+
+  <select id="salaryRange" onchange="applyFilters()">
+    <option value="">All Salaries</option>
+    <option value="0-20000">Below 20,000</option>
+    <option value="20000-50000">20,000 – 50,000</option>
+    <option value="50000-100000">Above 50,000</option>
+  </select>
+</div>
+
+<!-- ================= EMPLOYEE TABLE ================= -->
+<table>
+  <thead>
+    <tr>
+      <th>EMP NO</th>
+      <th>EMP NAME</th>
+      <th>EMAIL</th>
+      <th>DEPARTMENT</th>
+      <th>VIEW MORE</th>
+      <th>ACTION</th>
+    </tr>
+  </thead>
+  <tbody id="tableBody"></tbody>
+</table>
+
+<!-- ================= VIEW MORE MODAL ================= -->
+<div id="viewModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+
+    <div class="profile-card">
+      <div class="avatar">👤</div>
+      <h3 id="mName"></h3>
+      <p><b>Email:</b> <span id="mEmail"></span></p>
+      <p><b>Mobile:</b> <span id="mMobile"></span></p>
+      <p><b>Salary:</b> ₹<span id="mSalary"></span></p>
+      <p><b>Department:</b> <span id="mDept"></span></p>
+      <p><b>Rating:</b> <span id="mRating"></span></p>
+    </div>
+  </div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/home.js"></script>
+</body>
+</html>
